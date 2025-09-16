@@ -37,60 +37,179 @@ export default function StockListPage(){
   }
 
   return (
-    <div className='flex min-h-screen'>
-      <Sidebar />
-      <main className='p-6 flex-1'>
-        <h1 className='text-2xl font-bold mb-4'>Create Stock List</h1>
 
-        <div className='overflow-x-auto'>
-          <table className='w-full bg-white rounded-2xl shadow'>
-            <thead className='bg-googleBlue text-white'>
-              <tr>
-                <th className='p-2 text-left'>Item</th>
-                <th className='p-2 text-left'>Qty</th>
-                <th className='p-2 text-left'>Unit</th>
-                <th className='p-2 text-left'>Price (optional)</th>
-                <th className='p-2 text-left'>Total</th>
-                <th className='p-2'></th>
-              </tr>
-            </thead>
-            <tbody>
-              {items.map((r, i)=>(
-                <tr key={i} className='border-b'>
-                  <td className='p-2'><Input value={r.itemName} onChange={e=>update(i,'itemName', e.target.value)} /></td>
-                  <td className='p-2'><Input type='number' value={r.quantity} onChange={e=>update(i,'quantity', e.target.value)} /></td>
-                  <td className='p-2'>
-                    <select value={r.unit} onChange={e=>update(i,'unit', e.target.value)} className='w-full rounded-2xl border px-3 py-2'>
-                      <option>pcs</option><option>kg</option><option>box</option><option>litre</option>
-                    </select>
-                  </td>
-                  <td className='p-2'><Input type='number' value={r.price} onChange={e=>update(i,'price', e.target.value)} placeholder='optional' /></td>
-                  <td className='p-2 font-semibold'>{r.total === '' ? '' : Number(r.total).toFixed(2)}</td>
-                  <td className='p-2'><button onClick={()=>delRow(i)} className='text-red-600'>Delete</button></td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+    <div className="flex min-h-screen flex-col md:flex-row">
+  {/* ✅ Sidebar goes top on mobile, side on desktop */}
+  <Sidebar />
 
-        <div className='flex gap-3 mt-4'>
-          <Button onClick={addRow} className='bg-googleYellow'>Add Row</Button>
-          <Button onClick={()=>setPreview(p=>!p)} className='bg-white border'>Preview</Button>
-          <Button onClick={save} className='bg-googleGreen text-white'>Save</Button>
-          <Button onClick={download} className='bg-googleBlue text-white'>Generate PDF</Button>
-          <div className='ml-auto font-bold'>Grand Total: {grand ? grand.toFixed(2) : '-'}</div>
-        </div>
+  <main className="p-6 flex-1">
+    <h1 className="text-2xl font-bold mb-4">Create Stock List</h1>
 
-        {preview && (
-          <div className='mt-6 bg-white rounded-2xl shadow p-4'>
-            <h2 className='font-bold mb-2'>Preview</h2>
-            <ul className='space-y-1'>
-              {items.map((r,i)=>( <li key={i} className='text-sm'>{r.itemName} — {r.quantity} {r.unit} {r.price? `@ ${r.price}`:''} {r.total? `= ${Number(r.total).toFixed(2)}`:''}</li> ))}
-            </ul>
-            {grand ? <div className='mt-2 font-bold'>Grand: {grand.toFixed(2)}</div> : null}
-          </div>
-        )}
-      </main>
+    {/* ✅ Desktop / Tablet table */}
+    <div className="hidden md:block overflow-x-auto">
+      <table className="w-full bg-white rounded-2xl shadow min-w-[700px]">
+        <thead className="bg-googleBlue text-white">
+          <tr>
+            <th className="p-2 text-left">Item</th>
+            <th className="p-2 text-left">Qty</th>
+            <th className="p-2 text-left">Unit</th>
+            <th className="p-2 text-left">Price (optional)</th>
+            <th className="p-2 text-left">Total</th>
+            <th className="p-2"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {items.map((r, i) => (
+            <tr key={i} className="border-b">
+              <td className="p-2">
+                <Input
+                  value={r.itemName}
+                  onChange={(e) => update(i, "itemName", e.target.value)}
+                />
+              </td>
+              <td className="p-2">
+                <Input
+                  type="number"
+                  value={r.quantity}
+                  onChange={(e) => update(i, "quantity", e.target.value)}
+                />
+              </td>
+              <td className="p-2">
+                <select
+                  value={r.unit}
+                  onChange={(e) => update(i, "unit", e.target.value)}
+                  className="w-full rounded-2xl border px-3 py-2"
+                >
+                  <option>pcs</option>
+                  <option>kg</option>
+                  <option>box</option>
+                  <option>litre</option>
+                </select>
+              </td>
+              <td className="p-2">
+                <Input
+                  type="number"
+                  value={r.price}
+                  onChange={(e) => update(i, "price", e.target.value)}
+                  placeholder="optional"
+                />
+              </td>
+              <td className="p-2 font-semibold">
+                {r.total === "" ? "" : Number(r.total).toFixed(2)}
+              </td>
+              <td className="p-2">
+                <button
+                  onClick={() => delRow(i)}
+                  className="text-red-600 text-sm"
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
+
+    {/* ✅ Mobile card view */}
+    <div className="md:hidden space-y-3">
+      {items.map((r, i) => (
+        <div
+          key={i}
+          className="bg-white rounded-xl shadow p-4 space-y-3 border"
+        >
+          <div>
+            <label className="text-sm font-medium">Item</label>
+            <Input
+              value={r.itemName}
+              onChange={(e) => update(i, "itemName", e.target.value)}
+            />
+          </div>
+          <div>
+            <label className="text-sm font-medium">Quantity</label>
+            <Input
+              type="number"
+              value={r.quantity}
+              onChange={(e) => update(i, "quantity", e.target.value)}
+            />
+          </div>
+          <div>
+            <label className="text-sm font-medium">Unit</label>
+            <select
+              value={r.unit}
+              onChange={(e) => update(i, "unit", e.target.value)}
+              className="w-full rounded-2xl border px-3 py-2"
+            >
+              <option>pcs</option>
+              <option>kg</option>
+              <option>box</option>
+              <option>litre</option>
+            </select>
+          </div>
+          <div>
+            <label className="text-sm font-medium">Price (optional)</label>
+            <Input
+              type="number"
+              value={r.price}
+              onChange={(e) => update(i, "price", e.target.value)}
+              placeholder="optional"
+            />
+          </div>
+          <div className="font-semibold">
+            {r.total !== "" ? `Total: ${Number(r.total).toFixed(2)}` : ""}
+          </div>
+          <button
+            onClick={() => delRow(i)}
+            className="text-red-600 text-sm"
+          >
+            Delete
+          </button>
+        </div>
+      ))}
+    </div>
+
+    {/* ✅ Actions */}
+    <div className="flex flex-wrap gap-3 mt-4 items-center">
+      <Button onClick={addRow} className="bg-googleYellow">
+        Add Row
+      </Button>
+      <Button
+        onClick={() => setPreview((p) => !p)}
+        className="bg-white border"
+      >
+        Preview
+      </Button>
+      <Button onClick={save} className="bg-googleGreen text-white">
+        Save
+      </Button>
+      <Button onClick={download} className="bg-googleBlue text-white">
+        Generate PDF
+      </Button>
+      <div className="ml-auto font-bold">
+        Grand Total: {grand ? grand.toFixed(2) : "-"}
+      </div>
+    </div>
+
+    {/* ✅ Preview */}
+    {preview && (
+      <div className="mt-6 bg-white rounded-2xl shadow p-4">
+        <h2 className="font-bold mb-2">Preview</h2>
+        <ul className="space-y-1">
+          {items.map((r, i) => (
+            <li key={i} className="text-sm">
+              {r.itemName} — {r.quantity} {r.unit}{" "}
+              {r.price ? `@ ${r.price}` : ""}{" "}
+              {r.total ? `= ${Number(r.total).toFixed(2)}` : ""}
+            </li>
+          ))}
+        </ul>
+        {grand ? (
+          <div className="mt-2 font-bold">Grand: {grand.toFixed(2)}</div>
+        ) : null}
+      </div>
+    )}
+  </main>
+</div>
+
   )
 }
