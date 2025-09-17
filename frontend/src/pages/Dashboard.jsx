@@ -2,6 +2,7 @@ import Sidebar from '../components/Sidebar.jsx'
 import { useMe } from '../hooks/useAuth.js'
 import QuotationStockHistory from '../components/QuotationStockHistory.jsx'
 import Weather from '../components/Weather.jsx'
+import FeatureCards from '../components/FeatureCard.jsx'
 
 export default function Dashboard(){
   const { me } = useMe()
@@ -23,6 +24,8 @@ export default function Dashboard(){
         Use the sidebar to create a Quotation or Stock List.
       </p>
     </header>
+
+    <FeatureCards />
 
     {/* Weather Component */}
     <section className="mb-8">
