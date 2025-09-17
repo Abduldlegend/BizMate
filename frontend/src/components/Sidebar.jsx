@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { LayoutList, ListOrdered, User, LogOut, Menu, X } from "lucide-react";
+import Logo from "./Logo";
 
 const NavLink = ({ to, icon: Icon, label }) => {
   const { pathname } = useLocation();
@@ -34,9 +35,12 @@ export default function Sidebar() {
     <>
       {/* Mobile header with logo + toggle */}
       <div className="md:hidden flex items-center justify-between p-4 border-b bg-white">
-        <div className="text-xl font-extrabold">
-          <span className="text-googleBlue">Biz</span>
-          <span className="text-googleGreen">Mate</span>
+        <div className="flex items-center gap-2 md:gap-3 text-xl font-extrabold">
+          <Logo />
+          <div className="text-xl md:text-2xl font-extrabold">
+              <span className="text-googleBlue">Biz</span>
+              <span className="text-googleGreen">Mate</span>
+          </div>
         </div>
         <button
           onClick={() => setOpen(!open)}
@@ -62,8 +66,13 @@ export default function Sidebar() {
       >
         {/* Desktop logo */}
         <div className="hidden md:block text-2xl font-extrabold mb-6">
-          <span className="text-googleBlue">Biz</span>
-          <span className="text-googleGreen">Mate</span>
+          <div className="flex items-center gap-2 md:gap-3">
+                <Logo />
+                <div className="text-xl md:text-2xl font-extrabold">
+                  <span className="text-googleBlue">Biz</span>
+                  <span className="text-googleGreen">Mate</span>
+                </div>
+              </div>
         </div>
 
         <nav className="flex flex-col gap-2">
