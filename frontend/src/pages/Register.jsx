@@ -17,12 +17,13 @@ export default function Register(){
 
   async function onSubmit(e){
     e.preventDefault()
-    setError(''); setOk('')
+    setError(''); setOk('Registering.....')
     try{
       await api.post('/api/auth/register', { businessName, businessType, motto, email, password })
       setOk('Registered! You can now log in.')
       setTimeout(()=>nav('/login'), 800)
     }catch(e){
+      setOk('')
       setError(e?.response?.data?.message || 'Registration failed')
     }
   }
@@ -32,7 +33,7 @@ export default function Register(){
       <form onSubmit={onSubmit} className='bg-white p-6 rounded-2xl shadow w-full max-w-md'>
         <h1 className='text-2xl font-bold mb-4'>Register</h1>
         {error && <div className='mb-3 text-red-600 text-sm'>{error}</div>}
-        {ok && <div className='mb-3 text-green-600 text-sm'>{ok}</div>}
+        {ok && <div className='mb-3 text-green-600 text-lg'>{ok}</div>}
         <Label>Business Name</Label>
         <Input value={businessName} onChange={e=>setBusinessName(e.target.value)} required className='mb-3' />
         <Label>Business Type</Label>

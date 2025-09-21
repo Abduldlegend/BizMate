@@ -5,8 +5,11 @@ import Register from './pages/Register.jsx'
 import Dashboard from './pages/Dashboard.jsx'
 import QuotePage from './pages/QuotePage.jsx'
 import StockListPage from './pages/StockListPage.jsx'
+import InventoryPage from './pages/InventoryPage.jsx'
 import Profile from './pages/Profile.jsx'
+import ProductsPage from './pages/Products.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
+
 
 export default function App() {
   return (
@@ -16,6 +19,8 @@ export default function App() {
       <Route path='/register' element={<Register />} />
 
       <Route element={<ProtectedRoute />}>
+        {/* <Route path="/inventory" element={<InventoryPage />} /> */}
+        <Route path="/inventory" element={<ProductsPage />} />
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/quotation' element={<QuotePage />} />
         <Route path='/stocklist' element={<StockListPage />} />

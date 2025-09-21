@@ -93,6 +93,10 @@ export default function QuotePage(){
                   <option>kg</option>
                   <option>box</option>
                   <option>litre</option>
+                  <option>bucket</option>
+                  <option>metre</option>
+                  <option>inch</option>
+                  <option>g</option>
                 </select>
               </td>
               <td className="p-2">
@@ -152,6 +156,10 @@ export default function QuotePage(){
               <option>kg</option>
               <option>box</option>
               <option>litre</option>
+              <option>bucket</option>
+              <option>metre</option>
+              <option>inch</option>
+              <option>g</option>
             </select>
           </div>
           <div>
@@ -178,7 +186,7 @@ export default function QuotePage(){
     {/* ✅ Actions */}
     <div className="flex flex-wrap gap-3 mt-4 items-center">
       <Button onClick={addRow} className="bg-googleYellow">
-        Add Row
+        Add Item
       </Button>
       <Button
         onClick={() => setPreview((p) => !p)}
@@ -190,7 +198,7 @@ export default function QuotePage(){
         Save
       </Button>
       <Button onClick={download} className="bg-googleBlue text-white">
-        Generate PDF
+        Download PDF
       </Button>
       <div className="ml-auto font-bold">
         Grand Total: {grand.toFixed(2)}

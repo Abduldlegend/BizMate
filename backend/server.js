@@ -7,6 +7,8 @@ import authRoutes from './routes/auth.js';
 import userRoutes from './routes/users.js';
 import quotationRoutes from './routes/quotations.js';
 import stocklistRoutes from './routes/stocklists.js';
+import inventoryRoutes from "./routes/inventoryRoutes.js";
+
 
 dotenv.config();
 const app = express();
@@ -28,6 +30,8 @@ app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/quotations', quotationRoutes);
 app.use('/api/stocklists', stocklistRoutes);
+app.use("/api/inventory", inventoryRoutes);
+
 
 // Start
 const PORT = process.env.PORT || 5000;
