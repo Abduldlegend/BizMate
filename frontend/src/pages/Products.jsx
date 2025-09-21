@@ -9,7 +9,7 @@ import AlertsList from "../components/AlertsList";
 import StatsCards from "../components/StatsCards";
 import Button from "@/components/ui/button";
 import Input from "@/components/ui/input";
-import { exportProductsToExcel } from "../utils/exportExcel";
+// import { exportProductsToExcel } from "../utils/exportExcel";
 import { exportProductsToPdf } from "../utils/exportPdf";
 
 export default function ProductsPage(){
@@ -99,12 +99,12 @@ export default function ProductsPage(){
           <div className="flex gap-2">
             <Button className="bg-googleGreen text-white" onClick={()=>setShowProduct(true)}>➕ Add Product</Button>
             {/* <Button className="bg-googleBlue text-white" onClick={()=>exportProductsToExcel(products)}>Export Excel</Button> */}
-            <Button
+            {/* <Button
               className="bg-googleBlue text-white"
               onClick={async () => await exportProductsToExcel(products)}
               >
                 Export Excel
-            </Button>
+            </Button> */}
 
             <Button className="bg-white border" onClick={()=>exportProductsToPdf(products)}>Export PDF</Button>
           </div>
