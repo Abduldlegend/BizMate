@@ -1,6 +1,6 @@
 // frontend/src/utils/exportExcel.js
 // import * as XLSX from "xlsx";
-import * as XLSX from "xlsx/xlsx.mjs";
+// import * as XLSX from "xlsx/xlsx.mjs";
 import { saveAs } from "file-saver";
 
 export function exportProductsToExcel(products = []){
