@@ -14,12 +14,10 @@
 //   saveAs(new Blob([wbout], { type: "application/octet-stream" }), "products.xlsx");
 // }
 
-
 // frontend/src/utils/exportExcel.js
-import { saveAs } from "file-saver";
-
 export async function exportProductsToExcel(products = []) {
-  // dynamically load xlsx only when needed
+  // dynamically import both file-saver and xlsx
+  const { saveAs } = await import("file-saver");
   const XLSX = await import("xlsx");
 
   const data = products.map(p => ({
@@ -40,3 +38,4 @@ export async function exportProductsToExcel(products = []) {
   const wbout = XLSX.write(wb, { bookType: "xlsx", type: "array" });
   saveAs(new Blob([wbout], { type: "application/octet-stream" }), "products.xlsx");
 }
+
