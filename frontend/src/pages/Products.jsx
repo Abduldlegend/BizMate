@@ -98,7 +98,14 @@ export default function ProductsPage(){
           </div>
           <div className="flex gap-2">
             <Button className="bg-googleGreen text-white" onClick={()=>setShowProduct(true)}>➕ Add Product</Button>
-            <Button className="bg-googleBlue text-white" onClick={()=>exportProductsToExcel(products)}>Export Excel</Button>
+            {/* <Button className="bg-googleBlue text-white" onClick={()=>exportProductsToExcel(products)}>Export Excel</Button> */}
+            <Button
+              className="bg-googleBlue text-white"
+              onClick={async () => await exportProductsToExcel(products)}
+              >
+                Export Excel
+            </Button>
+
             <Button className="bg-white border" onClick={()=>exportProductsToPdf(products)}>Export PDF</Button>
           </div>
         </div>
