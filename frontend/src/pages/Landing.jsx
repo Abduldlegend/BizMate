@@ -2,13 +2,118 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import Logo from '../components/Logo.jsx'
 import Weather from '../components/Weather.jsx'
+import { useState, useEffect } from "react";
+import { Menu, X, UserPlus, LogIn, Info, Star, Target } from "lucide-react";
 import ExchangeRates from '../components/ExchangeRates .jsx'
+
+
+const MobileNavLink = ({ to, icon: Icon, label, onClick }) => (
+  <Link
+    to={to}
+    onClick={onClick}
+    className="flex items-center gap-3 rounded-xl px-3 py-2 font-medium hover:bg-gray-100"
+  >
+    <Icon size={18} /> {label}
+  </Link>
+);
+
+function LandingHeader() {
+  const [open, setOpen] = useState(false);
+
+  // Close sidebar automatically on window resize to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) setOpen(false);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return (
+    <header className="px-4 md:px-6 py-4 flex items-center justify-between bg-white shadow relative">
+      {/* Logo */}
+      <div className="flex items-center gap-2 md:gap-3">
+        <Logo />
+        <div className="text-xl md:text-2xl font-extrabold">
+          <span className="text-googleBlue">Biz</span>
+          <span className="text-googleGreen">Mate</span>
+        </div>
+      </div>
+
+      {/* Desktop Nav */}
+      <div className="hidden sm:flex gap-2 md:gap-3">
+        <Link
+          to="/register"
+          className="px-3 md:px-4 py-2 rounded-2xl bg-googleBlue text-white font-semibold text-sm md:text-base"
+        >
+          Register
+        </Link>
+        <Link
+          to="/login"
+          className="px-3 md:px-4 py-2 rounded-2xl bg-white border font-semibold text-sm md:text-base"
+        >
+          Login
+        </Link>
+      </div>
+
+      {/* Mobile Hamburger */}
+      <div className="sm:hidden">
+        <button
+          onClick={() => setOpen(!open)}
+          aria-label={open ? "Close menu" : "Open menu"}
+          className="p-2 rounded-md hover:bg-gray-100"
+        >
+          {open ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Overlay (mobile only) */}
+      <div
+        className={`fixed inset-0 bg-black/40 z-30 transition-opacity sm:hidden ${
+          open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={() => setOpen(false)}
+      />
+
+      {/* Mobile Sidebar Menu */}
+      <aside
+        className={`fixed inset-y-0 right-0 w-64 p-4 border-l bg-white z-40 transform transition-transform duration-300 ease-in-out sm:hidden
+          ${open ? "translate-x-0" : "translate-x-full"}`}
+      >
+        {/* Logo */}
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center gap-2 font-extrabold text-xl">
+            <Logo />
+            <span className="text-googleBlue">Biz</span>
+            <span className="text-googleGreen">Mate</span>
+          </div>
+          <button onClick={() => setOpen(false)} className="p-2 rounded-md hover:bg-gray-100">
+            <X size={20} />
+          </button>
+        </div>
+
+        {/* Nav Links */}
+        <nav className="flex flex-col gap-2">
+          <MobileNavLink to="/register" icon={UserPlus} label="Register" onClick={() => setOpen(false)} />
+          <MobileNavLink to="/login" icon={LogIn} label="Login" onClick={() => setOpen(false)} />
+          <MobileNavLink to="/about" icon={Info} label="About Us" onClick={() => setOpen(false)} />
+          <MobileNavLink to="/features" icon={Star} label="Features" onClick={() => setOpen(false)} />
+          <MobileNavLink to="/mission" icon={Target} label="Our Mission" onClick={() => setOpen(false)} />
+        </nav>
+      </aside>
+    </header>
+  );
+}
+
 
 export default function Landing(){
   return (
     <div className="min-h-screen flex flex-col">
   {/* Header */}
-  <header className="px-4 md:px-6 py-4 flex items-center justify-between bg-white shadow">
+
+    <LandingHeader />
+
+  {/* <header className="px-4 md:px-6 py-4 flex items-center justify-between bg-white shadow">
     <div className="flex items-center gap-2 md:gap-3">
       <Logo />
       <div className="text-xl md:text-2xl font-extrabold">
@@ -30,7 +135,7 @@ export default function Landing(){
         Login
       </Link>
     </div>
-  </header>
+  </header> */}
 
   {/* Main */}
   <main className="flex-1">

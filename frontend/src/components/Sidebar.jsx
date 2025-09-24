@@ -47,7 +47,8 @@ export default function Sidebar() {
           aria-label={open ? "Close menu" : "Open menu"}
           className="p-2 rounded-md hover:bg-gray-100"
         >
-          {open ? <X size={24} /> : <Menu size={24} />}
+          {/* {open ? <X size={24} /> :  */}
+          {<Menu size={24} />}
         </button>
       </div>
 
@@ -61,9 +62,20 @@ export default function Sidebar() {
 
       {/* Sidebar */}
       <aside
-        className={`fixed md:static inset-y-0 left-0 w-64 p-4 border-r bg-white z-40 transform transition-transform duration-300 ease-in-out
-          ${open ? "translate-x-0" : "-translate-x-full md:translate-x-0"}`}
+        className={`fixed md:static inset-y-0 right-0 w-64 p-4 border-r bg-white z-40 transform transition-transform duration-300 ease-in-out
+          ${open ? "translate-x-0" : "translate-x-full md:translate-x-0"}`} 
       >
+          <div className="flex items-center justify-between mb-6 md:hidden">
+                    <div className="flex items-center gap-2 font-extrabold text-xl">
+                      <Logo />
+                      <span className="text-googleBlue">Biz</span>
+                      <span className="text-googleGreen">Mate</span>
+                    </div>
+                    <button onClick={() => setOpen(false)} className="p-2 rounded-md hover:bg-gray-100">
+                      <X size={20} />
+                    </button>
+                  </div>
+
         {/* Desktop logo */}
         <div className="hidden md:block text-2xl font-extrabold mb-6">
           <div className="flex items-center gap-2 md:gap-3">

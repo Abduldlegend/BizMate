@@ -24,7 +24,7 @@ export default function Profile(){
   }
 
   return (
-    <div className="flex flex-col sm:flex-row min-h-screen">
+    <div className="flex min-h-screen flex-col md:flex-row">
   {/* Sidebar */}
   <Sidebar />
 
@@ -61,7 +61,7 @@ export default function Profile(){
         className="mb-4"
       />
 
-      <Button className="bg-googleBlue text-white">Save</Button>
+      <Button className="bg-googleBlue text-white">Update Profile</Button>
     </form>
   </main>
 </div>
