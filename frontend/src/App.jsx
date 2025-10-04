@@ -8,6 +8,7 @@ import StockListPage from './pages/StockListPage.jsx'
 import InventoryPage from './pages/InventoryPage.jsx'
 import Profile from './pages/Profile.jsx'
 import ProductsPage from './pages/Products.jsx'
+import InvoicesPage from './pages/InvoicesPage.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
 
 
@@ -24,6 +25,7 @@ export default function App() {
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/quotation' element={<QuotePage />} />
         <Route path='/stocklist' element={<StockListPage />} />
+        <Route path="/invoices" element={<InvoicesPage />} />
         <Route path='/profile' element={<Profile />} />
       </Route>
 

@@ -89,9 +89,10 @@ export default function Sidebar() {
 
         <nav className="flex flex-col gap-2">
           <NavLink to="/dashboard" icon={LayoutList} label="Dashboard" />
-          <NavLink to="/quotation" icon={ListOrdered} label="Create Quotation" />
           <NavLink to='/inventory' icon={LayoutList} label='My Inventory' />
+          <NavLink to="/quotation" icon={ListOrdered} label="Create Quotation" />
           <NavLink to="/stocklist" icon={ListOrdered} label="Create Stock List" />
+          <NavLink to="/invoices" icon={ListOrdered} label="Generate Invoice" />
           <NavLink to="/profile" icon={User} label="Profile" />
           <a
             href="/"

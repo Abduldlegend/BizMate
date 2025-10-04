@@ -94,10 +94,10 @@ function LandingHeader() {
 
         {/* Nav Links */}
         <nav className="flex flex-col gap-2">
-          <MobileNavLink to="/register" icon={UserPlus} label="Register" onClick={() => setOpen(false)} />
-          <MobileNavLink to="/login" icon={LogIn} label="Login" onClick={() => setOpen(false)} />
           <MobileNavLink to="/about" icon={Info} label="About Us" onClick={() => setOpen(false)} />
           <MobileNavLink to="/features" icon={Star} label="Features" onClick={() => setOpen(false)} />
+          <MobileNavLink to="/login" icon={LogIn} label="Login" onClick={() => setOpen(false)} />
+          <MobileNavLink to="/register" icon={UserPlus} label="Register" onClick={() => setOpen(false)} />
           <MobileNavLink to="/mission" icon={Target} label="Our Mission" onClick={() => setOpen(false)} />
         </nav>
       </aside>
@@ -113,30 +113,6 @@ export default function Landing(){
 
     <LandingHeader />
 
-  {/* <header className="px-4 md:px-6 py-4 flex items-center justify-between bg-white shadow">
-    <div className="flex items-center gap-2 md:gap-3">
-      <Logo />
-      <div className="text-xl md:text-2xl font-extrabold">
-        <span className="text-googleBlue">Biz</span>
-        <span className="text-googleGreen">Mate</span>
-      </div>
-    </div>
-    <div className="hidden sm:flex gap-2 md:gap-3">
-      <Link
-        to="/register"
-        className="px-3 md:px-4 py-2 rounded-2xl bg-googleBlue text-white font-semibold text-sm md:text-base"
-      >
-        Register
-      </Link>
-      <Link
-        to="/login"
-        className="px-3 md:px-4 py-2 rounded-2xl bg-white border font-semibold text-sm md:text-base"
-      >
-        Login
-      </Link>
-    </div>
-  </header> */}
-
   {/* Main */}
   <main className="flex-1">
     {/* Hero Section */}
@@ -147,10 +123,10 @@ export default function Landing(){
         transition={{ duration: 0.6 }}
         className="text-3xl sm:text-4xl md:text-6xl font-extrabold mb-4"
       >
-        Generate Quotations & Stock Lists in Minutes
+        Simplify Record-Keeping for Your Business.
       </motion.h1>
       <p className="text-gray-600 max-w-2xl mx-auto md:mx-0 text-sm sm:text-base">
-        BizMate helps workers and traders create professional, branded PDFs with auto-calculated totals.
+        Say goodbye to manual records. With BizMate, you can manage stock, create quotations, and issue invoices instantly, giving SMEs more time to focus on growth.
       </p>
       <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
         <Link
@@ -191,10 +167,10 @@ export default function Landing(){
       <div className="max-w-5xl mx-auto">
         <h2 className="text-2xl sm:text-3xl font-bold mb-6">Features</h2>
         <ul className="grid sm:grid-cols-2 gap-4 list-disc pl-5 sm:pl-6 text-sm sm:text-base">
-          <li>Auto-total calculations</li>
-          <li>Styled PDF exports (Google colors)</li>
-          <li>JWT-secured API</li>
-          <li>Mobile-first responsive UI</li>
+          <li>Inventory management</li>
+          <li>Qoutation generation</li>
+          <li>Stock List creation</li>
+          <li>Invoice generation</li>
         </ul>
       </div>
     </section>

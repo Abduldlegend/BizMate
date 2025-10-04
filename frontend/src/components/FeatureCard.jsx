@@ -30,7 +30,7 @@ export default function FeatureCards() {
       desc: "Instantly create and download invoices.",
       color: "bg-white text-black border shadow",
       icon: <Receipt className="w-8 h-8" />,
-      to: "/invoice",
+      to: "/invoices",
     },
   ];
 

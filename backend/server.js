@@ -8,7 +8,7 @@ import userRoutes from './routes/users.js';
 import quotationRoutes from './routes/quotations.js';
 import stocklistRoutes from './routes/stocklists.js';
 import inventoryRoutes from "./routes/inventoryRoutes.js";
-
+import invoiceRoutes from "./routes/invoiceRoutes.js"
 
 dotenv.config();
 const app = express();
@@ -31,6 +31,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/quotations', quotationRoutes);
 app.use('/api/stocklists', stocklistRoutes);
 app.use("/api/inventory", inventoryRoutes);
+app.use('/api/invoices', invoiceRoutes);
 
 
 // Start
