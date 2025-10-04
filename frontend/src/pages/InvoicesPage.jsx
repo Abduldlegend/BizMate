@@ -36,7 +36,7 @@ export default function InvoicesPage() {
   };
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex flex-col md:flex-row min-h-screen">
       <Sidebar />
       <main className="flex-1 p-4">
         <div className="flex items-center justify-between mb-4">
